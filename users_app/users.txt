@@ -1,0 +1,20 @@
+source djangoPy3Env/bin/activate
+cd ..
+cd django_fundamentals 
+cd users
+python3 manage.py makemigrations
+python3 manage.py migrate
+python3 manage.py shell
+from users_app.models import User
+User.objects.create(first_name='Mary', last_name='Smith', email_address='mary@hotmail.com', age=45)
+User.objects.create(first_name='Peter', last_name='Brown', email_address='peter@gmail.com', age=50)
+User.objects.create(first_name='John', last_name='White', email_address='john@hotmail.com', age=60)
+User.objects.all()
+User.objects.last()
+User.objects.first()
+john=User.objects.get(id=3)
+john.last_name='Pancakes'
+john.save()
+peter=User.objects.get(id=2)
+peter.delete()
+User.objects.order_by('first_name')
